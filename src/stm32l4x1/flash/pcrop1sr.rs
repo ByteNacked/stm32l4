@@ -1,0 +1,40 @@
+///Reader of register PCROP1SR
+pub type R = crate::R<u32, super::PCROP1SR>;
+///Writer for register PCROP1SR
+pub type W = crate::W<u32, super::PCROP1SR>;
+///Register PCROP1SR `reset()`'s with value 0xffff_0000
+impl crate::ResetValue for super::PCROP1SR {
+    type Type = u32;
+    #[inline(always)]
+    fn reset_value() -> Self::Type {
+        0xffff_0000
+    }
+}
+///Reader of field `PCROP1_STRT`
+pub type PCROP1_STRT_R = crate::R<u16, u16>;
+///Write proxy for field `PCROP1_STRT`
+pub struct PCROP1_STRT_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> PCROP1_STRT_W<'a> {
+    ///Writes raw bits to the field
+    #[inline(always)]
+    pub unsafe fn bits(self, value: u16) -> &'a mut W {
+        self.w.bits = (self.w.bits & !0xffff) | ((value as u32) & 0xffff);
+        self.w
+    }
+}
+impl R {
+    ///Bits 0:15 - Bank 1 PCROP area start offset
+    #[inline(always)]
+    pub fn pcrop1_strt(&self) -> PCROP1_STRT_R {
+        PCROP1_STRT_R::new((self.bits & 0xffff) as u16)
+    }
+}
+impl W {
+    ///Bits 0:15 - Bank 1 PCROP area start offset
+    #[inline(always)]
+    pub fn pcrop1_strt(&mut self) -> PCROP1_STRT_W {
+        PCROP1_STRT_W { w: self }
+    }
+}
