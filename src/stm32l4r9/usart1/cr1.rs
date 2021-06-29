@@ -1473,6 +1473,237 @@ impl<'a> UE_W<'a> {
         self.w
     }
 }
+///FIFO mode enable
+///
+///Value on reset: 0
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum FIFOEN_A {
+    ///0: FIFO mode is disabled
+    DISABLED = 0,
+    ///1: FIFO mode is enabled
+    ENABLED = 1,
+}
+impl From<FIFOEN_A> for bool {
+    #[inline(always)]
+    fn from(variant: FIFOEN_A) -> Self {
+        variant as u8 != 0
+    }
+}
+///Reader of field `FIFOEN`
+pub type FIFOEN_R = crate::R<bool, FIFOEN_A>;
+impl FIFOEN_R {
+    ///Get enumerated values variant
+    #[inline(always)]
+    pub fn variant(&self) -> FIFOEN_A {
+        match self.bits {
+            false => FIFOEN_A::DISABLED,
+            true => FIFOEN_A::ENABLED,
+        }
+    }
+    ///Checks if the value of the field is `DISABLED`
+    #[inline(always)]
+    pub fn is_disabled(&self) -> bool {
+        *self == FIFOEN_A::DISABLED
+    }
+    ///Checks if the value of the field is `ENABLED`
+    #[inline(always)]
+    pub fn is_enabled(&self) -> bool {
+        *self == FIFOEN_A::ENABLED
+    }
+}
+///Write proxy for field `FIFOEN`
+pub struct FIFOEN_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> FIFOEN_W<'a> {
+    ///Writes `variant` to the field
+    #[inline(always)]
+    pub fn variant(self, variant: FIFOEN_A) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    ///FIFO mode is disabled
+    #[inline(always)]
+    pub fn disabled(self) -> &'a mut W {
+        self.variant(FIFOEN_A::DISABLED)
+    }
+    ///FIFO mode is enabled
+    #[inline(always)]
+    pub fn enabled(self) -> &'a mut W {
+        self.variant(FIFOEN_A::ENABLED)
+    }
+    ///Sets the field bit
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    ///Clears the field bit
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    ///Writes raw bits to the field
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 29)) | (((value as u32) & 0x01) << 29);
+        self.w
+    }
+}
+///TXFIFO empty interrupt enable
+///
+///Value on reset: 0
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum TXFEIE_A {
+    ///0: Interrupt inhibited
+    DISABLED = 0,
+    ///1: USART interrupt generated when TXFE = 1 in the USART_ISR register
+    ENABLED = 1,
+}
+impl From<TXFEIE_A> for bool {
+    #[inline(always)]
+    fn from(variant: TXFEIE_A) -> Self {
+        variant as u8 != 0
+    }
+}
+///Reader of field `TXFEIE`
+pub type TXFEIE_R = crate::R<bool, TXFEIE_A>;
+impl TXFEIE_R {
+    ///Get enumerated values variant
+    #[inline(always)]
+    pub fn variant(&self) -> TXFEIE_A {
+        match self.bits {
+            false => TXFEIE_A::DISABLED,
+            true => TXFEIE_A::ENABLED,
+        }
+    }
+    ///Checks if the value of the field is `DISABLED`
+    #[inline(always)]
+    pub fn is_disabled(&self) -> bool {
+        *self == TXFEIE_A::DISABLED
+    }
+    ///Checks if the value of the field is `ENABLED`
+    #[inline(always)]
+    pub fn is_enabled(&self) -> bool {
+        *self == TXFEIE_A::ENABLED
+    }
+}
+///Write proxy for field `TXFEIE`
+pub struct TXFEIE_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> TXFEIE_W<'a> {
+    ///Writes `variant` to the field
+    #[inline(always)]
+    pub fn variant(self, variant: TXFEIE_A) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    ///Interrupt inhibited
+    #[inline(always)]
+    pub fn disabled(self) -> &'a mut W {
+        self.variant(TXFEIE_A::DISABLED)
+    }
+    ///USART interrupt generated when TXFE = 1 in the USART_ISR register
+    #[inline(always)]
+    pub fn enabled(self) -> &'a mut W {
+        self.variant(TXFEIE_A::ENABLED)
+    }
+    ///Sets the field bit
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    ///Clears the field bit
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    ///Writes raw bits to the field
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 30)) | (((value as u32) & 0x01) << 30);
+        self.w
+    }
+}
+///RXFIFO Full interrupt enable
+///
+///Value on reset: 0
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum RXFFIE_A {
+    ///0: Interrupt inhibited
+    DISABLED = 0,
+    ///1: USART interrupt generated when RXFF = 1 in the USART_ISR register
+    ENABLED = 1,
+}
+impl From<RXFFIE_A> for bool {
+    #[inline(always)]
+    fn from(variant: RXFFIE_A) -> Self {
+        variant as u8 != 0
+    }
+}
+///Reader of field `RXFFIE`
+pub type RXFFIE_R = crate::R<bool, RXFFIE_A>;
+impl RXFFIE_R {
+    ///Get enumerated values variant
+    #[inline(always)]
+    pub fn variant(&self) -> RXFFIE_A {
+        match self.bits {
+            false => RXFFIE_A::DISABLED,
+            true => RXFFIE_A::ENABLED,
+        }
+    }
+    ///Checks if the value of the field is `DISABLED`
+    #[inline(always)]
+    pub fn is_disabled(&self) -> bool {
+        *self == RXFFIE_A::DISABLED
+    }
+    ///Checks if the value of the field is `ENABLED`
+    #[inline(always)]
+    pub fn is_enabled(&self) -> bool {
+        *self == RXFFIE_A::ENABLED
+    }
+}
+///Write proxy for field `RXFFIE`
+pub struct RXFFIE_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> RXFFIE_W<'a> {
+    ///Writes `variant` to the field
+    #[inline(always)]
+    pub fn variant(self, variant: RXFFIE_A) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    ///Interrupt inhibited
+    #[inline(always)]
+    pub fn disabled(self) -> &'a mut W {
+        self.variant(RXFFIE_A::DISABLED)
+    }
+    ///USART interrupt generated when RXFF = 1 in the USART_ISR register
+    #[inline(always)]
+    pub fn enabled(self) -> &'a mut W {
+        self.variant(RXFFIE_A::ENABLED)
+    }
+    ///Sets the field bit
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    ///Clears the field bit
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    ///Writes raw bits to the field
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 31)) | (((value as u32) & 0x01) << 31);
+        self.w
+    }
+}
 ///Reader of field `DEDT`
 pub type DEDT_R = crate::R<u8, u8>;
 ///Write proxy for field `DEDT`
@@ -1597,6 +1828,21 @@ impl R {
     pub fn ue(&self) -> UE_R {
         UE_R::new((self.bits & 0x01) != 0)
     }
+    ///Bit 29 - FIFO mode enable
+    #[inline(always)]
+    pub fn fifoen(&self) -> FIFOEN_R {
+        FIFOEN_R::new(((self.bits >> 29) & 0x01) != 0)
+    }
+    ///Bit 30 - TXFIFO empty interrupt enable
+    #[inline(always)]
+    pub fn txfeie(&self) -> TXFEIE_R {
+        TXFEIE_R::new(((self.bits >> 30) & 0x01) != 0)
+    }
+    ///Bit 31 - RXFIFO Full interrupt enable
+    #[inline(always)]
+    pub fn rxffie(&self) -> RXFFIE_R {
+        RXFFIE_R::new(((self.bits >> 31) & 0x01) != 0)
+    }
     ///Bits 16:20 - Driver Enable de-assertion time
     #[inline(always)]
     pub fn dedt(&self) -> DEDT_R {
@@ -1703,6 +1949,21 @@ impl W {
     #[inline(always)]
     pub fn ue(&mut self) -> UE_W {
         UE_W { w: self }
+    }
+    ///Bit 29 - FIFO mode enable
+    #[inline(always)]
+    pub fn fifoen(&mut self) -> FIFOEN_W {
+        FIFOEN_W { w: self }
+    }
+    ///Bit 30 - TXFIFO empty interrupt enable
+    #[inline(always)]
+    pub fn txfeie(&mut self) -> TXFEIE_W {
+        TXFEIE_W { w: self }
+    }
+    ///Bit 31 - RXFIFO Full interrupt enable
+    #[inline(always)]
+    pub fn rxffie(&mut self) -> RXFFIE_W {
+        RXFFIE_W { w: self }
     }
     ///Bits 16:20 - Driver Enable de-assertion time
     #[inline(always)]

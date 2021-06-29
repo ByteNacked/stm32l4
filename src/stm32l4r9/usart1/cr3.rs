@@ -1414,6 +1414,477 @@ impl<'a> EIE_W<'a> {
         self.w
     }
 }
+///TXFIFO threshold interrupt enable
+///
+///Value on reset: 0
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum TXFTIE_A {
+    ///0: Interrupt inhibited
+    DISABLED = 0,
+    ///1: USART interrupt generated when TXFIFO reaches the threshold programmed in TXFTCFG
+    ENABLED = 1,
+}
+impl From<TXFTIE_A> for bool {
+    #[inline(always)]
+    fn from(variant: TXFTIE_A) -> Self {
+        variant as u8 != 0
+    }
+}
+///Reader of field `TXFTIE`
+pub type TXFTIE_R = crate::R<bool, TXFTIE_A>;
+impl TXFTIE_R {
+    ///Get enumerated values variant
+    #[inline(always)]
+    pub fn variant(&self) -> TXFTIE_A {
+        match self.bits {
+            false => TXFTIE_A::DISABLED,
+            true => TXFTIE_A::ENABLED,
+        }
+    }
+    ///Checks if the value of the field is `DISABLED`
+    #[inline(always)]
+    pub fn is_disabled(&self) -> bool {
+        *self == TXFTIE_A::DISABLED
+    }
+    ///Checks if the value of the field is `ENABLED`
+    #[inline(always)]
+    pub fn is_enabled(&self) -> bool {
+        *self == TXFTIE_A::ENABLED
+    }
+}
+///Write proxy for field `TXFTIE`
+pub struct TXFTIE_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> TXFTIE_W<'a> {
+    ///Writes `variant` to the field
+    #[inline(always)]
+    pub fn variant(self, variant: TXFTIE_A) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    ///Interrupt inhibited
+    #[inline(always)]
+    pub fn disabled(self) -> &'a mut W {
+        self.variant(TXFTIE_A::DISABLED)
+    }
+    ///USART interrupt generated when TXFIFO reaches the threshold programmed in TXFTCFG
+    #[inline(always)]
+    pub fn enabled(self) -> &'a mut W {
+        self.variant(TXFTIE_A::ENABLED)
+    }
+    ///Sets the field bit
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    ///Clears the field bit
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    ///Writes raw bits to the field
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 23)) | (((value as u32) & 0x01) << 23);
+        self.w
+    }
+}
+///Transmission Complete before guard time, interrupt enable
+///
+///Value on reset: 0
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum TCBGTIE_A {
+    ///0: Interrupt inhibited
+    DISABLED = 0,
+    ///1: USART interrupt generated whenever TCBGT=1 in the USART_ISR register
+    ENABLED = 1,
+}
+impl From<TCBGTIE_A> for bool {
+    #[inline(always)]
+    fn from(variant: TCBGTIE_A) -> Self {
+        variant as u8 != 0
+    }
+}
+///Reader of field `TCBGTIE`
+pub type TCBGTIE_R = crate::R<bool, TCBGTIE_A>;
+impl TCBGTIE_R {
+    ///Get enumerated values variant
+    #[inline(always)]
+    pub fn variant(&self) -> TCBGTIE_A {
+        match self.bits {
+            false => TCBGTIE_A::DISABLED,
+            true => TCBGTIE_A::ENABLED,
+        }
+    }
+    ///Checks if the value of the field is `DISABLED`
+    #[inline(always)]
+    pub fn is_disabled(&self) -> bool {
+        *self == TCBGTIE_A::DISABLED
+    }
+    ///Checks if the value of the field is `ENABLED`
+    #[inline(always)]
+    pub fn is_enabled(&self) -> bool {
+        *self == TCBGTIE_A::ENABLED
+    }
+}
+///Write proxy for field `TCBGTIE`
+pub struct TCBGTIE_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> TCBGTIE_W<'a> {
+    ///Writes `variant` to the field
+    #[inline(always)]
+    pub fn variant(self, variant: TCBGTIE_A) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    ///Interrupt inhibited
+    #[inline(always)]
+    pub fn disabled(self) -> &'a mut W {
+        self.variant(TCBGTIE_A::DISABLED)
+    }
+    ///USART interrupt generated whenever TCBGT=1 in the USART_ISR register
+    #[inline(always)]
+    pub fn enabled(self) -> &'a mut W {
+        self.variant(TCBGTIE_A::ENABLED)
+    }
+    ///Sets the field bit
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    ///Clears the field bit
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    ///Writes raw bits to the field
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 24)) | (((value as u32) & 0x01) << 24);
+        self.w
+    }
+}
+///Receive FIFO threshold configuration
+///
+///Value on reset: 0
+#[derive(Clone, Copy, Debug, PartialEq)]
+#[repr(u8)]
+pub enum RXFTCFG_A {
+    ///0: Receive FIFO reaches 1/8 of its depth
+    EIGHTH = 0,
+    ///1: Receive FIFO reaches 1/4 of its depth
+    QUARTER = 1,
+    ///2: Receive FIFO reaches 1/2 of its depth
+    HALF = 2,
+    ///3: Receive FIFO reaches 3/4 of its depth
+    THREEQUARTERS = 3,
+    ///4: Receive FIFO reaches 7/8 of its depth
+    SEVENEIGHTH = 4,
+    ///5: Receive FIFO becomes full
+    FULL = 5,
+}
+impl From<RXFTCFG_A> for u8 {
+    #[inline(always)]
+    fn from(variant: RXFTCFG_A) -> Self {
+        variant as _
+    }
+}
+///Reader of field `RXFTCFG`
+pub type RXFTCFG_R = crate::R<u8, RXFTCFG_A>;
+impl RXFTCFG_R {
+    ///Get enumerated values variant
+    #[inline(always)]
+    pub fn variant(&self) -> crate::Variant<u8, RXFTCFG_A> {
+        use crate::Variant::*;
+        match self.bits {
+            0 => Val(RXFTCFG_A::EIGHTH),
+            1 => Val(RXFTCFG_A::QUARTER),
+            2 => Val(RXFTCFG_A::HALF),
+            3 => Val(RXFTCFG_A::THREEQUARTERS),
+            4 => Val(RXFTCFG_A::SEVENEIGHTH),
+            5 => Val(RXFTCFG_A::FULL),
+            i => Res(i),
+        }
+    }
+    ///Checks if the value of the field is `EIGHTH`
+    #[inline(always)]
+    pub fn is_eighth(&self) -> bool {
+        *self == RXFTCFG_A::EIGHTH
+    }
+    ///Checks if the value of the field is `QUARTER`
+    #[inline(always)]
+    pub fn is_quarter(&self) -> bool {
+        *self == RXFTCFG_A::QUARTER
+    }
+    ///Checks if the value of the field is `HALF`
+    #[inline(always)]
+    pub fn is_half(&self) -> bool {
+        *self == RXFTCFG_A::HALF
+    }
+    ///Checks if the value of the field is `THREEQUARTERS`
+    #[inline(always)]
+    pub fn is_three_quarters(&self) -> bool {
+        *self == RXFTCFG_A::THREEQUARTERS
+    }
+    ///Checks if the value of the field is `SEVENEIGHTH`
+    #[inline(always)]
+    pub fn is_seven_eighth(&self) -> bool {
+        *self == RXFTCFG_A::SEVENEIGHTH
+    }
+    ///Checks if the value of the field is `FULL`
+    #[inline(always)]
+    pub fn is_full(&self) -> bool {
+        *self == RXFTCFG_A::FULL
+    }
+}
+///Write proxy for field `RXFTCFG`
+pub struct RXFTCFG_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> RXFTCFG_W<'a> {
+    ///Writes `variant` to the field
+    #[inline(always)]
+    pub fn variant(self, variant: RXFTCFG_A) -> &'a mut W {
+        unsafe { self.bits(variant.into()) }
+    }
+    ///Receive FIFO reaches 1/8 of its depth
+    #[inline(always)]
+    pub fn eighth(self) -> &'a mut W {
+        self.variant(RXFTCFG_A::EIGHTH)
+    }
+    ///Receive FIFO reaches 1/4 of its depth
+    #[inline(always)]
+    pub fn quarter(self) -> &'a mut W {
+        self.variant(RXFTCFG_A::QUARTER)
+    }
+    ///Receive FIFO reaches 1/2 of its depth
+    #[inline(always)]
+    pub fn half(self) -> &'a mut W {
+        self.variant(RXFTCFG_A::HALF)
+    }
+    ///Receive FIFO reaches 3/4 of its depth
+    #[inline(always)]
+    pub fn three_quarters(self) -> &'a mut W {
+        self.variant(RXFTCFG_A::THREEQUARTERS)
+    }
+    ///Receive FIFO reaches 7/8 of its depth
+    #[inline(always)]
+    pub fn seven_eighth(self) -> &'a mut W {
+        self.variant(RXFTCFG_A::SEVENEIGHTH)
+    }
+    ///Receive FIFO becomes full
+    #[inline(always)]
+    pub fn full(self) -> &'a mut W {
+        self.variant(RXFTCFG_A::FULL)
+    }
+    ///Writes raw bits to the field
+    #[inline(always)]
+    pub unsafe fn bits(self, value: u8) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x07 << 25)) | (((value as u32) & 0x07) << 25);
+        self.w
+    }
+}
+///RXFIFO threshold interrupt enable
+///
+///Value on reset: 0
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum RXFTIE_A {
+    ///0: Interrupt inhibited
+    DISABLED = 0,
+    ///1: USART interrupt generated when Receive FIFO reaches the threshold programmed in RXFTCFG
+    ENABLED = 1,
+}
+impl From<RXFTIE_A> for bool {
+    #[inline(always)]
+    fn from(variant: RXFTIE_A) -> Self {
+        variant as u8 != 0
+    }
+}
+///Reader of field `RXFTIE`
+pub type RXFTIE_R = crate::R<bool, RXFTIE_A>;
+impl RXFTIE_R {
+    ///Get enumerated values variant
+    #[inline(always)]
+    pub fn variant(&self) -> RXFTIE_A {
+        match self.bits {
+            false => RXFTIE_A::DISABLED,
+            true => RXFTIE_A::ENABLED,
+        }
+    }
+    ///Checks if the value of the field is `DISABLED`
+    #[inline(always)]
+    pub fn is_disabled(&self) -> bool {
+        *self == RXFTIE_A::DISABLED
+    }
+    ///Checks if the value of the field is `ENABLED`
+    #[inline(always)]
+    pub fn is_enabled(&self) -> bool {
+        *self == RXFTIE_A::ENABLED
+    }
+}
+///Write proxy for field `RXFTIE`
+pub struct RXFTIE_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> RXFTIE_W<'a> {
+    ///Writes `variant` to the field
+    #[inline(always)]
+    pub fn variant(self, variant: RXFTIE_A) -> &'a mut W {
+        {
+            self.bit(variant.into())
+        }
+    }
+    ///Interrupt inhibited
+    #[inline(always)]
+    pub fn disabled(self) -> &'a mut W {
+        self.variant(RXFTIE_A::DISABLED)
+    }
+    ///USART interrupt generated when Receive FIFO reaches the threshold programmed in RXFTCFG
+    #[inline(always)]
+    pub fn enabled(self) -> &'a mut W {
+        self.variant(RXFTIE_A::ENABLED)
+    }
+    ///Sets the field bit
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    ///Clears the field bit
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    ///Writes raw bits to the field
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 28)) | (((value as u32) & 0x01) << 28);
+        self.w
+    }
+}
+///TXFIFO threshold configuration
+///
+///Value on reset: 0
+#[derive(Clone, Copy, Debug, PartialEq)]
+#[repr(u8)]
+pub enum TXFTCFG_A {
+    ///0: Transmit FIFO reaches 1/8 of its depth
+    EIGHTH = 0,
+    ///1: Transmit FIFO reaches 1/4 of its depth
+    QUARTER = 1,
+    ///2: Transmit FIFO reaches 1/2 of its depth
+    HALF = 2,
+    ///3: Transmit FIFO reaches 3/4 of its depth
+    THREEQUARTERS = 3,
+    ///4: Transmit FIFO reaches 7/8 of its depth
+    SEVENEIGHTH = 4,
+    ///5: Transmit FIFO becomes empty
+    EMPTY = 5,
+}
+impl From<TXFTCFG_A> for u8 {
+    #[inline(always)]
+    fn from(variant: TXFTCFG_A) -> Self {
+        variant as _
+    }
+}
+///Reader of field `TXFTCFG`
+pub type TXFTCFG_R = crate::R<u8, TXFTCFG_A>;
+impl TXFTCFG_R {
+    ///Get enumerated values variant
+    #[inline(always)]
+    pub fn variant(&self) -> crate::Variant<u8, TXFTCFG_A> {
+        use crate::Variant::*;
+        match self.bits {
+            0 => Val(TXFTCFG_A::EIGHTH),
+            1 => Val(TXFTCFG_A::QUARTER),
+            2 => Val(TXFTCFG_A::HALF),
+            3 => Val(TXFTCFG_A::THREEQUARTERS),
+            4 => Val(TXFTCFG_A::SEVENEIGHTH),
+            5 => Val(TXFTCFG_A::EMPTY),
+            i => Res(i),
+        }
+    }
+    ///Checks if the value of the field is `EIGHTH`
+    #[inline(always)]
+    pub fn is_eighth(&self) -> bool {
+        *self == TXFTCFG_A::EIGHTH
+    }
+    ///Checks if the value of the field is `QUARTER`
+    #[inline(always)]
+    pub fn is_quarter(&self) -> bool {
+        *self == TXFTCFG_A::QUARTER
+    }
+    ///Checks if the value of the field is `HALF`
+    #[inline(always)]
+    pub fn is_half(&self) -> bool {
+        *self == TXFTCFG_A::HALF
+    }
+    ///Checks if the value of the field is `THREEQUARTERS`
+    #[inline(always)]
+    pub fn is_three_quarters(&self) -> bool {
+        *self == TXFTCFG_A::THREEQUARTERS
+    }
+    ///Checks if the value of the field is `SEVENEIGHTH`
+    #[inline(always)]
+    pub fn is_seven_eighth(&self) -> bool {
+        *self == TXFTCFG_A::SEVENEIGHTH
+    }
+    ///Checks if the value of the field is `EMPTY`
+    #[inline(always)]
+    pub fn is_empty(&self) -> bool {
+        *self == TXFTCFG_A::EMPTY
+    }
+}
+///Write proxy for field `TXFTCFG`
+pub struct TXFTCFG_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> TXFTCFG_W<'a> {
+    ///Writes `variant` to the field
+    #[inline(always)]
+    pub fn variant(self, variant: TXFTCFG_A) -> &'a mut W {
+        unsafe { self.bits(variant.into()) }
+    }
+    ///Transmit FIFO reaches 1/8 of its depth
+    #[inline(always)]
+    pub fn eighth(self) -> &'a mut W {
+        self.variant(TXFTCFG_A::EIGHTH)
+    }
+    ///Transmit FIFO reaches 1/4 of its depth
+    #[inline(always)]
+    pub fn quarter(self) -> &'a mut W {
+        self.variant(TXFTCFG_A::QUARTER)
+    }
+    ///Transmit FIFO reaches 1/2 of its depth
+    #[inline(always)]
+    pub fn half(self) -> &'a mut W {
+        self.variant(TXFTCFG_A::HALF)
+    }
+    ///Transmit FIFO reaches 3/4 of its depth
+    #[inline(always)]
+    pub fn three_quarters(self) -> &'a mut W {
+        self.variant(TXFTCFG_A::THREEQUARTERS)
+    }
+    ///Transmit FIFO reaches 7/8 of its depth
+    #[inline(always)]
+    pub fn seven_eighth(self) -> &'a mut W {
+        self.variant(TXFTCFG_A::SEVENEIGHTH)
+    }
+    ///Transmit FIFO becomes empty
+    #[inline(always)]
+    pub fn empty(self) -> &'a mut W {
+        self.variant(TXFTCFG_A::EMPTY)
+    }
+    ///Writes raw bits to the field
+    #[inline(always)]
+    pub unsafe fn bits(self, value: u8) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x07 << 29)) | (((value as u32) & 0x07) << 29);
+        self.w
+    }
+}
 impl R {
     ///Bit 22 - Wakeup from Stop mode interrupt enable
     #[inline(always)]
@@ -1509,6 +1980,31 @@ impl R {
     #[inline(always)]
     pub fn eie(&self) -> EIE_R {
         EIE_R::new((self.bits & 0x01) != 0)
+    }
+    ///Bit 23 - TXFIFO threshold interrupt enable
+    #[inline(always)]
+    pub fn txftie(&self) -> TXFTIE_R {
+        TXFTIE_R::new(((self.bits >> 23) & 0x01) != 0)
+    }
+    ///Bit 24 - Transmission Complete before guard time, interrupt enable
+    #[inline(always)]
+    pub fn tcbgtie(&self) -> TCBGTIE_R {
+        TCBGTIE_R::new(((self.bits >> 24) & 0x01) != 0)
+    }
+    ///Bits 25:27 - Receive FIFO threshold configuration
+    #[inline(always)]
+    pub fn rxftcfg(&self) -> RXFTCFG_R {
+        RXFTCFG_R::new(((self.bits >> 25) & 0x07) as u8)
+    }
+    ///Bit 28 - RXFIFO threshold interrupt enable
+    #[inline(always)]
+    pub fn rxftie(&self) -> RXFTIE_R {
+        RXFTIE_R::new(((self.bits >> 28) & 0x01) != 0)
+    }
+    ///Bits 29:31 - TXFIFO threshold configuration
+    #[inline(always)]
+    pub fn txftcfg(&self) -> TXFTCFG_R {
+        TXFTCFG_R::new(((self.bits >> 29) & 0x07) as u8)
     }
 }
 impl W {
@@ -1606,5 +2102,30 @@ impl W {
     #[inline(always)]
     pub fn eie(&mut self) -> EIE_W {
         EIE_W { w: self }
+    }
+    ///Bit 23 - TXFIFO threshold interrupt enable
+    #[inline(always)]
+    pub fn txftie(&mut self) -> TXFTIE_W {
+        TXFTIE_W { w: self }
+    }
+    ///Bit 24 - Transmission Complete before guard time, interrupt enable
+    #[inline(always)]
+    pub fn tcbgtie(&mut self) -> TCBGTIE_W {
+        TCBGTIE_W { w: self }
+    }
+    ///Bits 25:27 - Receive FIFO threshold configuration
+    #[inline(always)]
+    pub fn rxftcfg(&mut self) -> RXFTCFG_W {
+        RXFTCFG_W { w: self }
+    }
+    ///Bit 28 - RXFIFO threshold interrupt enable
+    #[inline(always)]
+    pub fn rxftie(&mut self) -> RXFTIE_W {
+        RXFTIE_W { w: self }
+    }
+    ///Bits 29:31 - TXFIFO threshold configuration
+    #[inline(always)]
+    pub fn txftcfg(&mut self) -> TXFTCFG_W {
+        TXFTCFG_W { w: self }
     }
 }
